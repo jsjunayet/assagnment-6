@@ -1,3 +1,4 @@
+
 function blog(){
     window.location.href=('blog.html')
 }
@@ -22,6 +23,7 @@ const catagoriDataload=async(id)=>{
     const data = await res.json()
     const AllDatas = data.data
     showAlldata(AllDatas)
+    // sortbyView(AllDatas)
 
 }
 function showAlldata(AllDatas){
@@ -33,7 +35,7 @@ function showAlldata(AllDatas){
        <div class="font">
        <div class="relative">
        <img class="rounded-lg lg:h-[250px] lg:w-[350px] md:h-[300px] md:2-[4000px] h-full w-full" src="${alldata.thumbnail}" alt="Shoes" />
-       <button id="Show" class="text-white  rounded  absolute bottom-3 right-3 ">${alldata.others.posted_date?hhmmss((parseFloat(alldata.others.posted_date))):''}</button>
+       <button id="Show" class="text-white bg-[#171717] rounded  absolute bottom-3 right-3 ">${alldata.others.posted_date?hhmmss((parseFloat(alldata.others.posted_date))):''}</button>
        </div>
         <div class="flex flex-1 mt-5 lg:gap-8 sm:gap-2">
         <div class="w-[15%]">
@@ -51,8 +53,6 @@ function showAlldata(AllDatas){
      </div>
        `
        allButton.appendChild(NewDiv)
-       sortbyView(alldata)
-   
    })
    if(AllDatas.length===0){
     noDiv()
@@ -76,9 +76,5 @@ function hhmmss(totalSecond){
   let minutes = Math.floor((x-(hours*3600))/60);
   return (`${hours} hrs ${minutes} min ago`)
 }
-function sortbyView(){
-
-}
-
 dataload()
 catagoriDataload('1000')
